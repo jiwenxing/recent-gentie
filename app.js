@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.post('/saveComments',function(req, res){
 
     // 对象转换为字符串
-    var str_json = JSON.stringify(req.body);    
+    var str_json = JSON.stringify(req.body.data);    
     str_json = str_json.substr(0,str_json.length-1).substr(1,str_json.length);
 
     // 获取用户名
