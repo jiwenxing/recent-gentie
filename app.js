@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // bodyParser.json解析json数据格式的
 app.use(bodyParser.json());
  
-app.post('/saveJSON',function(req, res){
+app.post('/saveComments',function(req, res){
 
     // 对象转换为字符串
     var str_json = JSON.stringify(req.body);    
@@ -38,7 +38,7 @@ app.post('/saveJSON',function(req, res){
  
 });
 
-app.get('/getJSON', function(req, res){
+app.get('/getComments', function(req, res){
    // 获取用户名
     var user_name=req.query.user;
     console.log(user_name);
