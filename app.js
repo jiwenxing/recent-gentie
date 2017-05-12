@@ -18,10 +18,8 @@ app.post('/saveJSON',function(req, res){
 
     // 获取用户名
     var user_name=req.query.user;
-    // console.log(user_name);
 
     var filePathName = 'data/'+user_name+'.json'
-    // console.log(filePathName);
 
    fs.exists(filePathName, function(exists) {  
        // console.log(exists); 
