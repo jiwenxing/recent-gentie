@@ -1,0 +1,54 @@
+[
+  {
+    "title" : "xxx",
+    "url" : "http://localhost/1.htm",
+    "sourceId" : "xxx",
+    "ctime" : 11111,
+    "comments" : [{
+        "cid" : "xxx",
+        "content" : "xxxx",
+        "ctime" : 11111,
+        "pid" : "xxxx",
+        "ip" : "127.0.0.1",
+        "source" : "web",
+        "anonymous" : false,
+        "attachment" : {
+          "type" : 0,
+          "desc" : "xxx",
+          "info" : "http://localhost/1.jpg"
+        },
+        "user" : {
+          "userId" : "xxx",
+          "nickname" : "xxx",
+          "avatar" : "http://localhost/2.png"
+        }
+      }
+    ]
+  },
+  {
+    "title" : "xxx",
+    "url" : "http://localhost/1.htm",
+    "sourceId" : "xxx",
+    "ctime" : 11111,
+    "comments" : [{
+        "cid" : "xxx",
+        "content" : "xxxx",
+        "ctime" : 11111,
+        "pid" : "xxxx",
+        "ip" : "127.0.0.1",
+        "source" : "web",
+        "anonymous" : false,
+        "attachment" : {
+          "type" : 0,
+          "desc" : "xxx",
+          "info" : "http://localhost/1.jpg"
+        },
+        "user" : {
+          "userId" : "xxx",
+          "nickname" : "xxx",
+          "avatar" : "http://localhost/2.png"
+        }
+      }
+    ]
+  }
+]

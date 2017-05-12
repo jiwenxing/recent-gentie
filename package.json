@@ -1,0 +1,19 @@
+{
+  "name": "recent-gentie",
+  "version": "1.0.0",
+  "description": "show recent comments for blog",
+  "main": "saveComments.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gentie"
+  ],
+  "author": "jverson",
+  "license": "MIT"
+}
