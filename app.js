@@ -73,6 +73,7 @@ app.get('/getComments', function(req, res){
                comment_html = comment_html+'<li class="ds-comment"><div class="ds-meta"><a rel="nofollow author" target="_blank" href="">'+comment_user+'</a><span class="ds-time">'+comment_time+'</span></div><div class="ds-thread-title">在 <a href="'+article_url+'#comments">'+article_title+'</a> 中评论</div><div class="ds-excerpt">'+comment_content+'</div></li>';
             }
             
+            res.header('Access-Control-Allow-Origin', '*');
             res.send({"status":"ok","content":comment_html});
          // } catch (err) {
          //    json = null;
