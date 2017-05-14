@@ -9,16 +9,19 @@ app.use(bodyParser.urlencoded({extended: false}));
  
 // bodyParser.json解析json数据格式的
 app.use(bodyParser.json());
- 
+
+
+/**
+  网易云跟帖回推接口
+  每次有新评论，网易会将评论数据回推至此接口
+  接口中会对最新评论数据按照用户名称分文件进行保存
+*/
 app.post('/saveComments',function(req, res){
 
     // 对象转换为字符串
     var str_json = JSON.stringify(req.body.data);
-
-    fs.writeFile('data/origin.json', str_json, 'utf8', function(){
-                 // console.log("新增原始数据文件");
-    });
-
+    
+    // 将对象数组最外层的引号及方括号删掉
     str_json = str_json.substr(0,str_json.length-2).substr(2,str_json.length);
 
     // 获取用户名
@@ -27,8 +30,8 @@ app.post('/saveComments',function(req, res){
     var filePathName = 'data/'+user_name+'.json'
 
    fs.exists(filePathName, function(exists) {  
-       // console.log(exists); 
        if (exists) {
+            // 文件中将评论对象以逗号分隔存储，取回时两边添加方括号即为对象数组
             fs.appendFile(filePathName, ','+str_json, function (err) {
                  // console.log("追加文件");
             });
@@ -43,6 +46,11 @@ app.post('/saveComments',function(req, res){
  
 });
 
+
+/**
+  获取最新跟帖接口（返回html）
+  按照用户名返回最新评论数据，该接口已将数据拼装为html直接返回，可直接使用于Maupassant主题的展示
+*/
 app.get('/getComments', function(req, res){
    
     var user_name=req.query.user;
@@ -59,9 +67,7 @@ app.get('/getComments', function(req, res){
             for(var i=json.length-1; i>=length-5; i--){
                var article_title = json[i].title; 
                var article_url = json[i].url;
-               // console.log(article_url);
                var comments = json[i].comments;
-               // console.log(comments);
                var comment_time = comments[0].ctime;
                var now = new Date(comment_time);
                var month=now.getMonth()+1; 
@@ -74,6 +80,33 @@ app.get('/getComments', function(req, res){
             
             res.header('Access-Control-Allow-Origin', '*');
             res.send({"status":"ok","content":comment_html});
+         } catch (err) {
+            json = null;
+            res.send({"status":"error"});
+         }
+
+     });
+  
+});
+
+
+/**
+  获取最新跟帖接口（json格式）
+  按照用户名返回最新评论的json格式数据，便于用户自定义展示样式
+*/
+app.get('/getRawComments', function(req, res){
+   
+    var user_name=req.query.user;
+    var filePathName = 'data/'+user_name+'.json'
+
+    fs.readFile(filePathName,'utf8',function (err, data) {
+        if(err) console.log(err);
+        var json_str = '['+data+']';
+        try {
+            json_str = json_str.replace(/\\/g,"");
+            json = JSON.parse(json_str);
+            res.header('Access-Control-Allow-Origin', '*');
+            res.send(json);
          } catch (err) {
             json = null;
             res.send({"status":"error"});
