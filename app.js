@@ -106,7 +106,7 @@ app.get('/getRawComments', function(req, res){
             json_str = json_str.replace(/\\/g,"");
             json = JSON.parse(json_str);
             res.header('Access-Control-Allow-Origin', '*');
-            res.send(json);
+            res.send({"status":"ok","content":json});
          } catch (err) {
             json = null;
             res.send({"status":"error"});
