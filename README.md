@@ -11,10 +11,12 @@
 
 ## 使用方法
 
-1. 在[网易云跟帖后台管理](https://manage.gentie.163.com)中配置回推接口      
+### 在[网易云跟帖后台管理](https://manage.gentie.163.com)中配置回推接口      
+
 在网易云跟帖->后台管理->获取代码->优化设置的回推接口中填入评论回推接口地址（见下方接口说明），注意将参数中username替换为自己的用户名，用户名自定。配置完成后站点上每产生一条跟贴，将会向这个地址推送一条跟贴数据。
 
-2. 在博客或需要使用的地方调用获取评论接口查询最新留言      
+### 在博客或需要使用的地方调用获取评论接口查询最新留言  
+
 注意将接口中的username替换为第一步中使用的用户名，获取到留言数据后根据需要进行处理展示。调用方法示例如下：
 ```javascript
 fetch("http://gentie.jverson.com/getComments?user=username").then(function(res) {
@@ -31,7 +33,7 @@ fetch("http://gentie.jverson.com/getComments?user=username").then(function(res) 
 });
 ```
 
-# 接口说明
+## 接口说明
 
 提供以下三个接口：
 
